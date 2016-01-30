@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>postcarding</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+</head>
+<body onload="setTimeout(function () {document.getElementById('header').style.display='none'}, 2000); return false">
+<script>
+	var degrees = 0;
+	function rotate() {
+		if (degrees === 0 ){
+			$("#image").rotate(90 + degrees);
+		document.getElementById('image').style.transformOrigin = "38% 60%";
+		$('.container').css({height:screen.height});
+		degrees += 90;
+		} else if (degrees === 90 ){
+			$("#image").rotate(90 + degrees);
+		document.getElementById('image').style.transformOrigin = "50% 50%";
+		$('.container').css({height:screen.height});
+		degrees += 90;
+		} else if (degrees === 180 ){
+			$("#image").rotate(90 + degrees);
+		document.getElementById('image').style.transformOrigin = "60% 63%";
+		$('.container').css({height:screen.height});
+		degrees += 90;
+		} else if (degrees ===270) {
+			document.getElementById('image').style.WebkitTransform = "none";
+			change();
+			document.getElementById('image').style.transformOrigin = "50% 50%";
+			$('.container').css({height:"auto"});
+			degrees = 0;
+		}
+	} 
+	function back() {
+		document.getElementById('image').style.WebkitTransform = "none";
+		change();
+		document.getElementById('image').style.transformOrigin = "50% 50%";
+		$('.container').css({height:"auto"});
+
+	}		
+	function change() {
+		$("#image").css({maxheight:"100%"});
+		$("#image").css({maxwidth:"100%"});		
+		//document.getElementById('image').style.height = "100%";
+		//document.getElementById('image').style.width = "100%";
+	}
+	function show() {
+		var display = $('#optionBox').css('display');
+		if (display === 'none') {
+			document.getElementById('picSection').style.width = "70%";
+			document.getElementById('optionBox').style.display = "block";
+		} else if (display === 'block') {
+			document.getElementById('optionBox').style.display = "none";
+			document.getElementById('picSection').style.width = "95%";
+		}
+		
+	}
+
+ </script>
+	<div id="header">
+		<div class="content">
+			<div id="logo"><a href=""> Postcarding </a></div>
+		</div>
+	</div>
+	<div class="container">
+  		<div id="picSection">
+  		<img src="http://ajapaik.ee/media/uploads/DIGAR_71206_1.jpg" alt="postkaart" id="image" >
+  		</div>
+  		<button id="button1" onclick="show()">&#x2630;</button>
+  		<div id="optionBox">
+  			<button type="button" class="btn btn-default" onclick="flip()">Flip</button>
+  			<button type="button" class="btn btn-default" onclick="rotate()">Rotate</button>
+  			<button type="button" class="btn btn-default" onclick="back()">Original</button>
+  			<button type="button" class="btn btn-default" onclick="submit()">Submit</button>
+  			<div class="form-group">
+  				<label for="comment">Text:</label>
+  				<textarea class="form-control" rows="10" id="comment"></textarea>
+			</div>
+  		</div>
+	</div>
+</body>
+</html>

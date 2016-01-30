@@ -1,0 +1,63 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#header {
+	width: 100%;
+	background: url('../img/header-bg.png');
+	height: 80px;
+	position: fixed;
+	display: none;
+}
+
+#logo a { 
+	color: #fff; 
+	text-decoration: none; 
+	float: left; 
+	font-size: 30px; 
+	margin-top: 20px; 
+	padding-left: 100px;
+	color: #fff; 
+	font-family:"Arvo"; 
+	font-weight: bold; 
+}
+.container {
+	background-color: #f3f3f3;
+	overflow: hidden;
+	padding: 0;
+}
+#picSection {
+	padding: 20px;
+	display: inline-block;
+	float: left;
+	width: 95%;
+	height: 100%;
+	overflow: auto;
+}
+#image {
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+	position: relative;
+}
+#button1 {
+	display: inline-block;
+	float: right;
+	border: 2px solid #FFF;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 18px;
+	margin-top: 20px;
+	background-color: #f3f3f3;
+}
+#optionBox {
+	display: inline-block;
+	margin-top: 100px;
+	width: 300px;
+	height: 100%;
+	float: right;
+	font-family: "Oswald";
+	display: none;
+	
+}
