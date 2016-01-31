@@ -11,8 +11,10 @@
 	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
-<body onload="setTimeout(function () {document.getElementById('header').style.display='none'}, 2000); return false">
+<body >
 <script>
 	var degrees = 0;
 	function rotate() {
@@ -49,8 +51,7 @@
 	function change() {
 		$("#image").css({maxheight:"100%"});
 		$("#image").css({maxwidth:"100%"});		
-		//document.getElementById('image').style.height = "100%";
-		//document.getElementById('image').style.width = "100%";
+		
 	}
 	function show() {
 		var display = $('#optionBox').css('display');
@@ -63,7 +64,19 @@
 		}
 		
 	}
+	$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+	});
 
+	var x = '1';
+	function flip() {
+    var image = $('#image' + x).css('display');
+    if (display === 'none') {
+			document.getElementById('image' + x).style.display = "block";
+		x = '2';
+		document.getElementById('image' + x).style.display = "none";
+    }
+}
  </script>
 	<div id="header">
 		<div class="content">
@@ -72,18 +85,23 @@
 	</div>
 	<div class="container">
   		<div id="picSection">
-  		<img src="http://ajapaik.ee/media/uploads/DIGAR_71206_1.jpg" alt="postkaart" id="image" >
+  		<img src="http://ajapaik.ee/media/uploads/Digar_postkaartide_tagakyljed/DIGAR_71661_2.jpg" alt="postkaart" id="image2" onclick="flip()">
+  		<img src="http://ajapaik.ee/media/uploads/DIGAR_71661_1.jpg" alt="postkaart" id="image1" onclick="flip()">
   		</div>
-  		<button id="button1" onclick="show()">&#x2630;</button>
+  		<button type="button" class="btn btn-default" onclick="rotate()" id="button1" data-toggle="tooltip" data-placement="bottom" title="Rotate"><i class="material-icons">&#xE41A;</i></button>
+  		<button id="button1" onclick="show()" data-toggle="tooltip" data-placement="bottom" title="Insert text"><i class="material-icons">&#xE0B7;</i></button>
+  		<button id="button1" onclick="empty()" data-toggle="tooltip" data-placement="bottom" title="No text"><i class="material-icons">&#xE0CB;</i></button>
+  		<button id="button1" onclick="next()" data-toggle="tooltip" data-placement="bottom" title="Next postcard"><i class="material-icons">&#xE409;</i></button>
+  		<button id="button1" onclick="back()" data-toggle="tooltip" data-placement="bottom" title="Previous postcard"><i class="material-icons">&#xE408;</i></button>
+  		
   		<div id="optionBox">
-  			<button type="button" class="btn btn-default" onclick="flip()">Flip</button>
-  			<button type="button" class="btn btn-default" onclick="rotate()">Rotate</button>
-  			<button type="button" class="btn btn-default" onclick="back()">Original</button>
-  			<button type="button" class="btn btn-default" onclick="submit()">Submit</button>
+  			
   			<div class="form-group">
   				<label for="comment">Text:</label>
   				<textarea class="form-control" rows="10" id="comment"></textarea>
+
 			</div>
+			<button type="button" class="btn btn-default" onclick="submit()">Submit</button>
   		</div>
 	</div>
 </body>
