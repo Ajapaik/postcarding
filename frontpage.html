@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome to Postcarding!</title>
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+</head>
+<style>
+	* {
+		font-family: "Arvo";
+		margin: 0;
+		padding: 0;
+		}
+	body {
+		background: url("img/back.jpg") no-repeat center center fixed; 
+ 		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+        position: relative;
+	}
+	.tyhi {
+		margin: auto;
+		width: 50%;
+		height: 50px;
+
+
+	}
+	#header_et {
+        margin-top: 9%;
+		margin-right: 8%;
+        float: right;
+        display: block;
+	}
+	#text_et {
+        margin-top: 9%;
+		margin-left: 10%;
+		width: 500px;
+        font-size: 26px;
+        position: relative;
+        display: block;
+	}
+    p {
+        font-size: 20px;
+    }
+    a {
+        color: black;
+    }
+    #button1, #button2 {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    float: right;
+}
+
+    #button1:hover, #button2:hover{
+        background-color: #e7e7e7;
+    }
+</style>
+<body>
+    
+	<div class="tyhi"></div>
+	<div id="header_et">
+		<h1>Ajapaik: Vanad postkaardid</h1>
+	</div>
+    
+ 	<div id="text_et">
+		<h3>Äratame vanade postkaartide lood ellu!</h3><br>
+
+        <p>Avastame koos, milliseid lugusid saatsid inimesed üksteisele vanasti postkaartidega. Aita dešifreerida teadete sisu, aga ka kohtade ja kuupäevade info templitelt ja markidelt.</p><br>
+
+        <p>Rakenduse lõid Mihkel Väin, Mikk Reinsalu ja Vahur Puik Loomehäki häkatonil 29.–31. jaanuaril 2016.</p><br>
+
+        <p>Alustuseks on meil ligi 7000 Eesti postkaarti <a href="http://www.nlib.ee/">Eesti Rahvusraamatukogu</a> kollektsioonist ja üle 800 postkaardi Ungarist <a href="http://europeana.eu/portal/">Europeana.eu</a> kaudu.</p><br>
+
+        <p>Aita ka <a href="http://ajapaik.ee/?page=1">Ajapaigas</a> ajaloolisi pilte kaardile märkida ja üle pildistada.</p>
+ 	</div>
+    <button id="button1">Eesti postkaardid</button>
+    <button id="button2">Ungari postkaardid</button>
+    
+ 	
+</body>
+</html>
