@@ -1,0 +1,36 @@
+.container {
+	width: 90%;
+	max-width: 1200px;
+	padding: 0 auto;
+	margin-top: 40px;
+}
+#picSection {
+	display: inline-block;
+	float: left;
+	width: 96%;
+	padding-right: 2%;
+}
+.button {
+	border: 3px solid #FFF;
+	border-radius: 5px;
+	padding: 8px 8px 5px 8px;
+	font-size: 18px;
+	background-color: #f3f3f3;
+}
+#optionBox {
+	/*position: absolute;*/
+	width: 30%;
+	font-family: "Oswald";
+	display: none;
+	margin-bottom: 10px;
+}
+#buttons {
+	width: 4%;
+	display: inline-block;
+	float: right;
+}
+img{
+	max-width: 100%;
+	margin-bottom: 20px;
+	cursor: pointer;
+}

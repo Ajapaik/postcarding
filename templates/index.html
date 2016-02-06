@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Postcarding</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="style.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href='/static/cardpage.css' rel='stylesheet' type='text/css'>
+
+	<script>
+
+	window.onload = function(){
+		setTimeout(function(){
+			new Image().src = "{{postcard['front_img']}}";
+		}, 1000);
+	}
+
+	$(document).ready(function(){
+
+	    $('[data-toggle="tooltip"]').tooltip({
+		    trigger : 'hover'
+		});
+
+	    $('img').on({
+			'click': function(){
+				if ($('img').attr('src') === "{{postcard['back_img']}}"){
+					$('img').attr('src', "{{postcard['front_img']}}");
+				} else {
+					$('img').attr('src', "{{postcard['back_img']}}");
+				}
+			}
+		}); 
+
+		$(function() {
+		    $('#noText').bind('click', function() {
+		    	$("#noText").css("background-color", "rgb(255,200,200)");
+		   		var data = {}
+		   		data['cardId'] = "{{postcard['card_id']}}";
+		   		data['hasText'] = false;
+		      $.ajax({
+				    type : "POST",
+				    url : "/no_text",
+				    data: JSON.stringify(data, null, '\t'),
+				    contentType: 'application/json;charset=UTF-8',
+				    success: function(result) {
+				        console.log(result);
+				    }
+				});
+		    });
+		});	
+	});
+
+	function show() {
+		var display = $('#optionBox').css('display');
+		if (display === 'none') {
+			document.getElementById('picSection').style.width = "70%";
+			document.getElementById('optionBox').style.display = "inline-block";
+			document.getElementById('buttons').style.width = "30%";
+		} else if (display === 'inline-block') {
+			document.getElementById('optionBox').style.display = "none";
+			document.getElementById('picSection').style.width = "96%";
+			document.getElementById('buttons').style.width = "4%";
+		}
+	}
+
+	var rotate_factor = 0;
+	function rotate() {
+	    rotate_factor += 1;
+	    var rotate_angle = (-90 * rotate_factor) % 360;
+	    $("#card_img").rotate({angle:rotate_angle});
+	};
+
+
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-21689048-4', 'auto');
+	ga('send', 'pageview');
+
+
+	
+
+	</script>
+
+</head>
+<body >
+	<div class="container">
+  		<div id="picSection">
+	  		<img id="card_img" src="{{postcard['back_img']}}" alt="postcard" >
+	  		<a href="http://www.digar.ee/arhiiv/nlib-digar:{{postcard['card_id']}}" target="_blank">Digar {{postcard['card_id']}}</a>
+  		</div>
+
+  		<div id="optionBox">
+			<form method="POST">
+			<div class="form-group">
+			<textarea class="form-control" name="comment" rows="10">{{postcard["text"]}}</textarea>
+			</div>
+			<input type="submit" class="btn btn-default" value="Submit">
+			</form>
+		</div>
+
+	  	<div id="buttons">
+			 <button class="button" onclick="rotate()" data-toggle="tooltip" data-placement="bottom" title="Keera pilti"><i class="material-icons">&#xE419;</i></button>
+
+	  		<button class="button" onclick="show()" data-toggle="tooltip" data-placement="bottom" title="Vaata/sisesta teksti"><i class="material-icons">&#xE0B7;</i></button>
+
+	  		<button id="noText" class="button" data-toggle="tooltip" data-placement="bottom" title="Postkaardil ei ole teksti"><i class="material-icons">&#xE0CB;</i></button>
+
+	  		<a href="{{postcard['previous']}}"><button class="button"  data-toggle="tooltip" data-placement="bottom" title="Eelmine postkaart"><i class="material-icons">&#xE408;</i></button></a>
+
+	  		<a href="{{postcard['next']}}"><button class="button" data-toggle="tooltip" data-placement="bottom" title="Jargmine postkaart"><i class="material-icons">&#xE409;</i></button></a>
+
+	  		<a href="{{postcard['random_page']}}"><button class="button" data-toggle="tooltip" data-placement="bottom" title="Juhuslik postkaart"><i class="material-icons">&#xE043;</i></button></a>
+
+	  		
+	  	</div>
+
+	</div>
+</body>
+</html>

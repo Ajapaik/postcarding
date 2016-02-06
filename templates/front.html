@@ -13,7 +13,7 @@
 		padding: 0;
 		}
 	body {
-		background: url("img/back.jpg") no-repeat center center fixed; 
+		background: url("/static/img/back.jpg") no-repeat center center fixed; 
  		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -24,8 +24,6 @@
 		margin: auto;
 		width: 50%;
 		height: 50px;
-
-
 	}
 	#header_et {
         margin-top: 9%;
@@ -61,6 +59,8 @@
     transition-duration: 0.4s;
     cursor: pointer;
     float: right;
+    position: relative;
+    left:  -100px;
 }
 
     #button1:hover, #button2:hover{
@@ -81,12 +81,11 @@
 
         <p>Rakenduse lõid Mihkel Väin, Mikk Reinsalu ja Vahur Puik Loomehäki häkatonil 29.–31. jaanuaril 2016.</p><br>
 
-        <p>Alustuseks on meil ligi 7000 Eesti postkaarti <a href="http://www.nlib.ee/">Eesti Rahvusraamatukogu</a> kollektsioonist ja üle 800 postkaardi Ungarist <a href="http://europeana.eu/portal/">Europeana.eu</a> kaudu.</p><br>
+        <p>Alustuseks on meil ligi 7000 Eesti postkaarti <a href="http://www.nlib.ee/">Eesti Rahvusraamatukogu</a> kollektsioonist.</p><br>
 
         <p>Aita ka <a href="http://ajapaik.ee/?page=1">Ajapaigas</a> ajaloolisi pilte kaardile märkida ja üle pildistada.</p>
  	</div>
-    <button id="button1">Eesti postkaardid</button>
-    <button id="button2">Ungari postkaardid</button>
+    <a href="item/{{random_page}}"><button id="button1">Postkaarte sirvima</button></a>
     
  	
 </body>
